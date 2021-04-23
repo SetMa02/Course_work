@@ -1,0 +1,743 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Game_CenterModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AgeLimit">
+          <Key>
+            <PropertyRef Name="IdAge" />
+          </Key>
+          <Property Name="IdAge" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Edition">
+          <Key>
+            <PropertyRef Name="IdEd" />
+          </Key>
+          <Property Name="IdEd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Edname" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="IdEmployee" />
+          </Key>
+          <Property Name="IdEmployee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Panronymic" Type="nvarchar" MaxLength="20" />
+          <Property Name="IdPosition" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEmployee" Type="int" Nullable="false" />
+          <Property Name="IdGender" Type="int" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="Phone" Type="int" />
+          <Property Name="INN" Type="int" />
+          <Property Name="DateOfStart" Type="date" />
+          <Property Name="DateOfLeave" Type="date" />
+        </EntityType>
+        <EntityType Name="GameInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idGame" Type="int" Nullable="false" />
+          <Property Name="idPlatform" Type="int" />
+          <Property Name="idEdition" Type="int" />
+          <Property Name="MainGenre" Type="int" />
+          <Property Name="IdPublisher" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Release" Type="date" />
+          <Property Name="IdAgeLimit" Type="int" />
+        </EntityType>
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="IdGame" />
+          </Key>
+          <Property Name="IdGame" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="DelDate" Type="datetime" Nullable="false" />
+          <Property Name="Price" Type="money" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="IdGender" />
+          </Key>
+          <Property Name="IdGender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="IdGenre" />
+          </Key>
+          <Property Name="IdGenre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameOfGenre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Platform">
+          <Key>
+            <PropertyRef Name="IdPlatform" />
+          </Key>
+          <Property Name="IdPlatform" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="IdPosition" />
+          </Key>
+          <Property Name="IdPosition" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="IdPublisher" />
+          </Key>
+          <Property Name="IdPublisher" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PublisherName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="Id_Sale" />
+          </Key>
+          <Property Name="Id_Sale" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Game" Type="int" Nullable="false" />
+          <Property Name="DateofSale" Type="date" Nullable="false" />
+          <Property Name="Qty" Type="int" />
+        </EntityType>
+        <Association Name="FK_Employee_Position">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="IdPosition" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdPosition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeInfo_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="IdEmployee" />
+            </Principal>
+            <Dependent Role="EmployeeInfo">
+              <PropertyRef Name="IdEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeInfo_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="IdGender" />
+            </Principal>
+            <Dependent Role="EmployeeInfo">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameInfo_AgeLimit">
+          <End Role="AgeLimit" Type="Self.AgeLimit" Multiplicity="0..1" />
+          <End Role="GameInfo" Type="Self.GameInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeLimit">
+              <PropertyRef Name="IdAge" />
+            </Principal>
+            <Dependent Role="GameInfo">
+              <PropertyRef Name="IdAgeLimit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameInfo_Edition">
+          <End Role="Edition" Type="Self.Edition" Multiplicity="0..1" />
+          <End Role="GameInfo" Type="Self.GameInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edition">
+              <PropertyRef Name="IdEd" />
+            </Principal>
+            <Dependent Role="GameInfo">
+              <PropertyRef Name="idEdition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameInfo_Games">
+          <End Role="Games" Type="Self.Games" Multiplicity="1" />
+          <End Role="GameInfo" Type="Self.GameInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="IdGame" />
+            </Principal>
+            <Dependent Role="GameInfo">
+              <PropertyRef Name="idGame" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameInfo_Genre">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="0..1" />
+          <End Role="GameInfo" Type="Self.GameInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="IdGenre" />
+            </Principal>
+            <Dependent Role="GameInfo">
+              <PropertyRef Name="MainGenre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameInfo_Platform">
+          <End Role="Platform" Type="Self.Platform" Multiplicity="0..1" />
+          <End Role="GameInfo" Type="Self.GameInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Platform">
+              <PropertyRef Name="IdPlatform" />
+            </Principal>
+            <Dependent Role="GameInfo">
+              <PropertyRef Name="idPlatform" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameInfo_Publisher">
+          <End Role="Publisher" Type="Self.Publisher" Multiplicity="0..1" />
+          <End Role="GameInfo" Type="Self.GameInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publisher">
+              <PropertyRef Name="IdPublisher" />
+            </Principal>
+            <Dependent Role="GameInfo">
+              <PropertyRef Name="IdPublisher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Games">
+          <End Role="Games" Type="Self.Games" Multiplicity="1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="IdGame" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="Id_Sale" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Game_CenterModelContainer">
+          <EntitySet Name="AgeLimit" EntityType="Self.AgeLimit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Edition" EntityType="Self.Edition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeInfo" EntityType="Self.EmployeeInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GameInfo" EntityType="Self.GameInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Games" EntityType="Self.Games" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Platform" EntityType="Self.Platform" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Employee_Position" Association="Self.FK_Employee_Position">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeInfo_Employee" Association="Self.FK_EmployeeInfo_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeInfo_Gender" Association="Self.FK_EmployeeInfo_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameInfo_AgeLimit" Association="Self.FK_GameInfo_AgeLimit">
+            <End Role="AgeLimit" EntitySet="AgeLimit" />
+            <End Role="GameInfo" EntitySet="GameInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameInfo_Edition" Association="Self.FK_GameInfo_Edition">
+            <End Role="Edition" EntitySet="Edition" />
+            <End Role="GameInfo" EntitySet="GameInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameInfo_Games" Association="Self.FK_GameInfo_Games">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="GameInfo" EntitySet="GameInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameInfo_Genre" Association="Self.FK_GameInfo_Genre">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="GameInfo" EntitySet="GameInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameInfo_Platform" Association="Self.FK_GameInfo_Platform">
+            <End Role="Platform" EntitySet="Platform" />
+            <End Role="GameInfo" EntitySet="GameInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameInfo_Publisher" Association="Self.FK_GameInfo_Publisher">
+            <End Role="Publisher" EntitySet="Publisher" />
+            <End Role="GameInfo" EntitySet="GameInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Games" Association="Self.FK_Sales_Games">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Game_CenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AgeLimit">
+          <Key>
+            <PropertyRef Name="IdAge" />
+          </Key>
+          <Property Name="IdAge" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="GameInfo" Relationship="Self.FK_GameInfo_AgeLimit" FromRole="AgeLimit" ToRole="GameInfo" />
+        </EntityType>
+        <EntityType Name="Edition">
+          <Key>
+            <PropertyRef Name="IdEd" />
+          </Key>
+          <Property Name="IdEd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Edname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="GameInfo" Relationship="Self.FK_GameInfo_Edition" FromRole="Edition" ToRole="GameInfo" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="IdEmployee" />
+          </Key>
+          <Property Name="IdEmployee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Panronymic" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IdPosition" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Position" Relationship="Self.FK_Employee_Position" FromRole="Employee" ToRole="Position" />
+          <NavigationProperty Name="EmployeeInfo" Relationship="Self.FK_EmployeeInfo_Employee" FromRole="Employee" ToRole="EmployeeInfo" />
+        </EntityType>
+        <EntityType Name="EmployeeInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEmployee" Type="Int32" Nullable="false" />
+          <Property Name="IdGender" Type="Int32" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Phone" Type="Int32" />
+          <Property Name="INN" Type="Int32" />
+          <Property Name="DateOfStart" Type="DateTime" Precision="0" />
+          <Property Name="DateOfLeave" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_EmployeeInfo_Employee" FromRole="EmployeeInfo" ToRole="Employee" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_EmployeeInfo_Gender" FromRole="EmployeeInfo" ToRole="Gender" />
+        </EntityType>
+        <EntityType Name="GameInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idGame" Type="Int32" Nullable="false" />
+          <Property Name="idPlatform" Type="Int32" />
+          <Property Name="idEdition" Type="Int32" />
+          <Property Name="MainGenre" Type="Int32" />
+          <Property Name="IdPublisher" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Release" Type="DateTime" Precision="0" />
+          <Property Name="IdAgeLimit" Type="Int32" />
+          <NavigationProperty Name="AgeLimit" Relationship="Self.FK_GameInfo_AgeLimit" FromRole="GameInfo" ToRole="AgeLimit" />
+          <NavigationProperty Name="Edition" Relationship="Self.FK_GameInfo_Edition" FromRole="GameInfo" ToRole="Edition" />
+          <NavigationProperty Name="Games" Relationship="Self.FK_GameInfo_Games" FromRole="GameInfo" ToRole="Games" />
+          <NavigationProperty Name="Genre" Relationship="Self.FK_GameInfo_Genre" FromRole="GameInfo" ToRole="Genre" />
+          <NavigationProperty Name="Platform" Relationship="Self.FK_GameInfo_Platform" FromRole="GameInfo" ToRole="Platform" />
+          <NavigationProperty Name="Publisher" Relationship="Self.FK_GameInfo_Publisher" FromRole="GameInfo" ToRole="Publisher" />
+        </EntityType>
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="IdGame" />
+          </Key>
+          <Property Name="IdGame" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="DelDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="GameInfo" Relationship="Self.FK_GameInfo_Games" FromRole="Games" ToRole="GameInfo" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Games" FromRole="Games" ToRole="Sales" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="IdGender" />
+          </Key>
+          <Property Name="IdGender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gender1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EmployeeInfo" Relationship="Self.FK_EmployeeInfo_Gender" FromRole="Gender" ToRole="EmployeeInfo" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="IdGenre" />
+          </Key>
+          <Property Name="IdGenre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameOfGenre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="GameInfo" Relationship="Self.FK_GameInfo_Genre" FromRole="Genre" ToRole="GameInfo" />
+        </EntityType>
+        <EntityType Name="Platform">
+          <Key>
+            <PropertyRef Name="IdPlatform" />
+          </Key>
+          <Property Name="IdPlatform" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="GameInfo" Relationship="Self.FK_GameInfo_Platform" FromRole="Platform" ToRole="GameInfo" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="IdPosition" />
+          </Key>
+          <Property Name="IdPosition" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Position1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Position" FromRole="Position" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="IdPublisher" />
+          </Key>
+          <Property Name="IdPublisher" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PublisherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="GameInfo" Relationship="Self.FK_GameInfo_Publisher" FromRole="Publisher" ToRole="GameInfo" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="Id_Sale" />
+          </Key>
+          <Property Name="Id_Sale" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Game" Type="Int32" Nullable="false" />
+          <Property Name="DateofSale" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Qty" Type="Int32" />
+          <NavigationProperty Name="Games" Relationship="Self.FK_Sales_Games" FromRole="Sales" ToRole="Games" />
+        </EntityType>
+        <Association Name="FK_GameInfo_AgeLimit">
+          <End Role="AgeLimit" Type="Self.AgeLimit" Multiplicity="0..1" />
+          <End Role="GameInfo" Type="Self.GameInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeLimit">
+              <PropertyRef Name="IdAge" />
+            </Principal>
+            <Dependent Role="GameInfo">
+              <PropertyRef Name="IdAgeLimit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameInfo_Edition">
+          <End Role="Edition" Type="Self.Edition" Multiplicity="0..1" />
+          <End Role="GameInfo" Type="Self.GameInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edition">
+              <PropertyRef Name="IdEd" />
+            </Principal>
+            <Dependent Role="GameInfo">
+              <PropertyRef Name="idEdition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Position">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="IdPosition" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdPosition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeInfo_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="IdEmployee" />
+            </Principal>
+            <Dependent Role="EmployeeInfo">
+              <PropertyRef Name="IdEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeInfo_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="IdGender" />
+            </Principal>
+            <Dependent Role="EmployeeInfo">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameInfo_Games">
+          <End Role="Games" Type="Self.Games" Multiplicity="1" />
+          <End Role="GameInfo" Type="Self.GameInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="IdGame" />
+            </Principal>
+            <Dependent Role="GameInfo">
+              <PropertyRef Name="idGame" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameInfo_Genre">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="0..1" />
+          <End Role="GameInfo" Type="Self.GameInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="IdGenre" />
+            </Principal>
+            <Dependent Role="GameInfo">
+              <PropertyRef Name="MainGenre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameInfo_Platform">
+          <End Role="Platform" Type="Self.Platform" Multiplicity="0..1" />
+          <End Role="GameInfo" Type="Self.GameInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Platform">
+              <PropertyRef Name="IdPlatform" />
+            </Principal>
+            <Dependent Role="GameInfo">
+              <PropertyRef Name="idPlatform" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameInfo_Publisher">
+          <End Role="Publisher" Type="Self.Publisher" Multiplicity="0..1" />
+          <End Role="GameInfo" Type="Self.GameInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publisher">
+              <PropertyRef Name="IdPublisher" />
+            </Principal>
+            <Dependent Role="GameInfo">
+              <PropertyRef Name="IdPublisher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Games">
+          <End Role="Games" Type="Self.Games" Multiplicity="1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="IdGame" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="Id_Sale" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Game_CenterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AgeLimit" EntityType="Self.AgeLimit" />
+          <EntitySet Name="Edition" EntityType="Self.Edition" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="EmployeeInfo" EntityType="Self.EmployeeInfo" />
+          <EntitySet Name="GameInfo" EntityType="Self.GameInfo" />
+          <EntitySet Name="Games" EntityType="Self.Games" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
+          <EntitySet Name="Genre" EntityType="Self.Genre" />
+          <EntitySet Name="Platform" EntityType="Self.Platform" />
+          <EntitySet Name="Position" EntityType="Self.Position" />
+          <EntitySet Name="Publisher" EntityType="Self.Publisher" />
+          <EntitySet Name="Sales" EntityType="Self.Sales" />
+          <AssociationSet Name="FK_GameInfo_AgeLimit" Association="Self.FK_GameInfo_AgeLimit">
+            <End Role="AgeLimit" EntitySet="AgeLimit" />
+            <End Role="GameInfo" EntitySet="GameInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameInfo_Edition" Association="Self.FK_GameInfo_Edition">
+            <End Role="Edition" EntitySet="Edition" />
+            <End Role="GameInfo" EntitySet="GameInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Position" Association="Self.FK_Employee_Position">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeInfo_Employee" Association="Self.FK_EmployeeInfo_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeInfo_Gender" Association="Self.FK_EmployeeInfo_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameInfo_Games" Association="Self.FK_GameInfo_Games">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="GameInfo" EntitySet="GameInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameInfo_Genre" Association="Self.FK_GameInfo_Genre">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="GameInfo" EntitySet="GameInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameInfo_Platform" Association="Self.FK_GameInfo_Platform">
+            <End Role="Platform" EntitySet="Platform" />
+            <End Role="GameInfo" EntitySet="GameInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameInfo_Publisher" Association="Self.FK_GameInfo_Publisher">
+            <End Role="Publisher" EntitySet="Publisher" />
+            <End Role="GameInfo" EntitySet="GameInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Games" Association="Self.FK_Sales_Games">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Game_CenterModelContainer" CdmEntityContainer="Game_CenterEntities">
+          <EntitySetMapping Name="AgeLimit">
+            <EntityTypeMapping TypeName="Game_CenterModel.AgeLimit">
+              <MappingFragment StoreEntitySet="AgeLimit">
+                <ScalarProperty Name="IdAge" ColumnName="IdAge" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Edition">
+            <EntityTypeMapping TypeName="Game_CenterModel.Edition">
+              <MappingFragment StoreEntitySet="Edition">
+                <ScalarProperty Name="IdEd" ColumnName="IdEd" />
+                <ScalarProperty Name="Edname" ColumnName="Edname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="Game_CenterModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="Panronymic" ColumnName="Panronymic" />
+                <ScalarProperty Name="IdPosition" ColumnName="IdPosition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeInfo">
+            <EntityTypeMapping TypeName="Game_CenterModel.EmployeeInfo">
+              <MappingFragment StoreEntitySet="EmployeeInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="DateOfStart" ColumnName="DateOfStart" />
+                <ScalarProperty Name="DateOfLeave" ColumnName="DateOfLeave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameInfo">
+            <EntityTypeMapping TypeName="Game_CenterModel.GameInfo">
+              <MappingFragment StoreEntitySet="GameInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="idGame" ColumnName="idGame" />
+                <ScalarProperty Name="idPlatform" ColumnName="idPlatform" />
+                <ScalarProperty Name="idEdition" ColumnName="idEdition" />
+                <ScalarProperty Name="MainGenre" ColumnName="MainGenre" />
+                <ScalarProperty Name="IdPublisher" ColumnName="IdPublisher" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Release" ColumnName="Release" />
+                <ScalarProperty Name="IdAgeLimit" ColumnName="IdAgeLimit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="Game_CenterModel.Games">
+              <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="IdGame" ColumnName="IdGame" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="DelDate" ColumnName="DelDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="Game_CenterModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
+                <ScalarProperty Name="Gender1" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genre">
+            <EntityTypeMapping TypeName="Game_CenterModel.Genre">
+              <MappingFragment StoreEntitySet="Genre">
+                <ScalarProperty Name="IdGenre" ColumnName="IdGenre" />
+                <ScalarProperty Name="NameOfGenre" ColumnName="NameOfGenre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Platform">
+            <EntityTypeMapping TypeName="Game_CenterModel.Platform">
+              <MappingFragment StoreEntitySet="Platform">
+                <ScalarProperty Name="IdPlatform" ColumnName="IdPlatform" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Position">
+            <EntityTypeMapping TypeName="Game_CenterModel.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="IdPosition" ColumnName="IdPosition" />
+                <ScalarProperty Name="Position1" ColumnName="Position" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publisher">
+            <EntityTypeMapping TypeName="Game_CenterModel.Publisher">
+              <MappingFragment StoreEntitySet="Publisher">
+                <ScalarProperty Name="IdPublisher" ColumnName="IdPublisher" />
+                <ScalarProperty Name="PublisherName" ColumnName="PublisherName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="Game_CenterModel.Sales">
+              <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="Id_Sale" ColumnName="Id_Sale" />
+                <ScalarProperty Name="id_Game" ColumnName="id_Game" />
+                <ScalarProperty Name="DateofSale" ColumnName="DateofSale" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
