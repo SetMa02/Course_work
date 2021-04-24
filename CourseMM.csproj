@@ -137,7 +137,10 @@
     <Compile Include="Sales.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserControlMenuItem.xaml.cs">
+    <Compile Include="UserControls\UserControlDashboard.xaml.cs">
+      <DependentUpon>UserControlDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlMenuItem.xaml.cs">
       <DependentUpon>UserControlMenuItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ItemMenu.cs" />
@@ -162,7 +165,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControlMenuItem.xaml">
+    <Page Include="UserControls\UserControlDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UserControlMenuItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

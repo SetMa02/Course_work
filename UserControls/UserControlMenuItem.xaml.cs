@@ -1,4 +1,5 @@
-﻿using CourseMM.ViewModel;
+﻿using CourseMM.Pages;
+using CourseMM.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,14 +22,22 @@ namespace CourseMM
     /// </summary>
     public partial class UserControlMenuItem : UserControl
     {
-        public UserControlMenuItem(ItemMenu itemMenu)
+        PageAdmin _context;
+        public UserControlMenuItem(ItemMenu itemMenu, PageAdmin context)
         {
             InitializeComponent();
+
+            _context = context;
 
             ExpanderMenu.Visibility = itemMenu.SubItems == null ? Visibility.Collapsed : Visibility.Visible;
             ListViewItemMenu.Visibility = itemMenu.SubItems == null ? Visibility.Visible : Visibility.Collapsed;
 
             this.DataContext = itemMenu;
+        }
+
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _context.SwitchScreen(((SubItem)((ListView)sender).SelectedItem).Screen);
         }
     }
 }
