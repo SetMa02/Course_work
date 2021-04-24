@@ -19,6 +19,7 @@
             <ComboBox FontSize="14" Margin="5" x:Name="cmbPlatform" Width="75" SelectionChanged="cmbPlatform_SelectionChanged" DisplayMemberPath="Name"></ComboBox>
             <Button x:Name="btnAdd" Click="btnAdd_Click" Margin="5" FontSize="24" Content="+" Padding="5,-2,5,5">
             </Button>
+            <Button x:Name="btnRefresh" Margin="5" Click="btnRefresh_Click">Обновить</Button>
         </StackPanel>
         <DataGrid Grid.Row="1" x:Name="DataGridGames" AlternatingRowBackground="AliceBlue" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*">
             <DataGrid.Columns>

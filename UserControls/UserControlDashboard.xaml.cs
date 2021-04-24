@@ -26,28 +26,52 @@ namespace CourseMM
             InitializeComponent();
             context = new Game_CenterEntities();
             DataGridGames.ItemsSource = context.GameInfo.ToList();
+            cmbGenre.ItemsSource = context.Genre.ToList();
+            cmbPlatform.ItemsSource = context.Platform.ToList();
         }
 
      
 
         private void txtName_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            string findText = txtName.Text;
+            List<GameInfo> gameInfo = context.GameInfo.ToList();
+            gameInfo = gameInfo.Where(x => x.Games.Name.ToLower().Contains(findText.ToLower())).ToList();
+            DataGridGames.ItemsSource = gameInfo.ToList();
         }
 
         private void cmbGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (cmbGenre == null)
+                return;
 
+            var currentGenre = (Genre)cmbGenre.SelectedItem;
+            List<GameInfo> gameInfos = context.GameInfo.ToList();
+            gameInfos = gameInfos.Where(a => a.Genre == currentGenre).ToList();
+            DataGridGames.ItemsSource = gameInfos.ToList();
         }
 
         private void cmbPlatform_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (cmbPlatform == null)
+                return;
 
+            var currentPlatform = (Platform)cmbPlatform.SelectedItem;
+            List<GameInfo> gameInfos1 = context.GameInfo.ToList();
+            gameInfos1 = gameInfos1.Where(a => a.Platform == currentPlatform).ToList();
+            DataGridGames.ItemsSource = gameInfos1.ToList();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            cmbPlatform = null;
+            cmbGenre = null;
+            DataGridGames.ItemsSource = context.GameInfo.ToList();
         }
     }
 }
