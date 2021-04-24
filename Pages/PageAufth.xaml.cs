@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Timers;
+using System.Threading;
 
 namespace CourseMM.Pages
 {
@@ -23,7 +24,7 @@ namespace CourseMM.Pages
     {
         Game_CenterEntities context;
         int tryCount = 0;
-        Timer timer;
+        //Timer timer;
         public PageAufth()
         {
             InitializeComponent();
@@ -37,24 +38,18 @@ namespace CourseMM.Pages
             {
                     Aufthoriz();
                 if(tryCount == 5)
-                { 
+                {   
                     btnAufth.IsEnabled = false;
-                    timer = new Timer(5000);
-                    timer.Elapsed += new ElapsedEventHandler(OnTimerEvent);
-                    timer.Enabled = true;
-                    timer.Start();
+                    MessageBox.Show("Кнопка заьлокирована на 5 секунд");
+                    Thread.Sleep(5000);
+                    
+                    tryCount = 0;
                     btnAufth.IsEnabled = true;
                 }
             }
         }
 
-        public void OnTimerEvent(object sender, ElapsedEventArgs e)
-        {
-            timer.Stop();
-            timer.Close();
-            tryCount = 0;
-           
-        }
+    
 
         private void Aufthoriz()
         {
@@ -76,4 +71,5 @@ namespace CourseMM.Pages
 
         }
     }
+  
 }

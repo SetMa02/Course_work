@@ -111,6 +111,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageAdmin.xaml.cs">
+      <DependentUpon>PageAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageAufth.xaml.cs">
       <DependentUpon>PageAufth.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\PageAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PageAufth.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
