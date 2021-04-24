@@ -34,7 +34,7 @@ namespace CourseMM.Pages
 
         private void btnAufth_Click(object sender, RoutedEventArgs e)
         {
-            if (txtLogin.Text != null && txtPass.Text != null)
+            if (txtLogin.Text != null && txtPass.ToString() != null)
             {
                     Aufthoriz();
                 if(tryCount == 5)
@@ -52,7 +52,7 @@ namespace CourseMM.Pages
         private void Aufthoriz()
         {
             string login = txtLogin.Text;
-            string password = txtPass.Text;
+            string password = txtPass.Password.ToString();
 
             Position position = context.Position.FirstOrDefault(
                 p => p.Login == login && p.Password == password);
