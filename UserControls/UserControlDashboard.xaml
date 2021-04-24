@@ -5,14 +5,30 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CourseMM"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-            
+            <TextBox x:Name="txtName" Margin="5" Width="75" FontSize="14" TextChanged="txtName_TextChanged"></TextBox>
+            <TextBlock FontSize="14" Margin="5">Жанр: </TextBlock>
+            <ComboBox FontSize="14" Margin="5" x:Name="cmbGenre" Width="75"  SelectionChanged="cmbGenre_SelectionChanged" DisplayMemberPath="NameOfGenre"></ComboBox>
+            <TextBlock FontSize="14" Margin="5">Платформа: </TextBlock>
+            <ComboBox FontSize="14" Margin="5" x:Name="cmbPlatform" Width="75" SelectionChanged="cmbPlatform_SelectionChanged" DisplayMemberPath="Name"></ComboBox>
+            <Button x:Name="btnAdd" Click="btnAdd_Click" Margin="5" FontSize="24" Content="+" Padding="5,-2,5,5">
+            </Button>
         </StackPanel>
+        <DataGrid Grid.Row="1" x:Name="DataGridGames" AlternatingRowBackground="AliceBlue" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding Games.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Жанр" Binding="{Binding Genre.NameOfGenre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Платформа" Binding="{Binding Platform.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата поствки" Binding="{Binding Games.DelDate, StringFormat={}{0:dd.MM.yyyy}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Games.Qty}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Games.Price}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

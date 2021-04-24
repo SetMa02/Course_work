@@ -26,13 +26,13 @@
         <Grid HorizontalAlignment="Stretch" Grid.Row="1" Background="{StaticResource PrimaryHueMidBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"></RowDefinition>
-                <RowDefinition Height="326"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Background="GhostWhite">
                  <Image  Source="/Images/logo.png"></Image> 
             </Grid>
             <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
-                <StackPanel x:Name="Menu" Margin="10" ></StackPanel>
+                <StackPanel x:Name="Menu" Margin="5" ></StackPanel>
             </ScrollViewer>
             </Grid>
         <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" x:Name="StackPanelMain"></StackPanel>

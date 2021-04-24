@@ -17,7 +17,6 @@ namespace CourseMM
         public int ID { get; set; }
         public int idGame { get; set; }
         public Nullable<int> idPlatform { get; set; }
-        public Nullable<int> idEdition { get; set; }
         public Nullable<int> MainGenre { get; set; }
         public Nullable<int> IdPublisher { get; set; }
         public string Description { get; set; }
@@ -25,7 +24,6 @@ namespace CourseMM
         public Nullable<int> IdAgeLimit { get; set; }
     
         public virtual AgeLimit AgeLimit { get; set; }
-        public virtual Edition Edition { get; set; }
         public virtual Games Games { get; set; }
         public virtual Genre Genre { get; set; }
         public virtual Platform Platform { get; set; }

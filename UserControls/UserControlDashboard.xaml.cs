@@ -20,9 +20,34 @@ namespace CourseMM
     /// </summary>
     public partial class UserControlDashboard : UserControl
     {
+        Game_CenterEntities context;
         public UserControlDashboard()
         {
             InitializeComponent();
+            context = new Game_CenterEntities();
+            DataGridGames.ItemsSource = context.GameInfo.ToList();
+        }
+
+     
+
+        private void txtName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void cmbGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void cmbPlatform_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

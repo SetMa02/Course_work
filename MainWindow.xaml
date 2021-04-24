@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseMM"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="900" ResizeMode="NoResize">
+        Title="MainWindow" Height="700" Width="1000" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>

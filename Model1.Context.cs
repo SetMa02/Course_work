@@ -26,7 +26,6 @@ namespace CourseMM
         }
     
         public virtual DbSet<AgeLimit> AgeLimit { get; set; }
-        public virtual DbSet<Edition> Edition { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<EmployeeInfo> EmployeeInfo { get; set; }
         public virtual DbSet<GameInfo> GameInfo { get; set; }

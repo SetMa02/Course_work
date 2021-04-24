@@ -4,21 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="32cdb12ef1f24f08ad646e8689a426d0" Name="Diagram1">
-        <EntityTypeShape EntityType="Game_CenterModel.AgeLimit" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Game_CenterModel.Edition" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+      <Diagram DiagramId="100c12c52150496f90c672056c91a213" Name="Diagram1">
+        <EntityTypeShape EntityType="Game_CenterModel.AgeLimit" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Game_CenterModel.Employee" Width="1.5" PointX="8" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Game_CenterModel.EmployeeInfo" Width="1.5" PointX="10.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Game_CenterModel.GameInfo" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Game_CenterModel.Games" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Game_CenterModel.Games" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Game_CenterModel.Gender" Width="1.5" PointX="8" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Game_CenterModel.Genre" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Game_CenterModel.Platform" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Game_CenterModel.Genre" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Game_CenterModel.Platform" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Game_CenterModel.Position" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Game_CenterModel.Publisher" Width="1.5" PointX="0.75" PointY="16.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Game_CenterModel.Sales" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Game_CenterModel.Publisher" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Game_CenterModel.Sales" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
         <AssociationConnector Association="Game_CenterModel.FK_GameInfo_AgeLimit" ManuallyRouted="false" />
-        <AssociationConnector Association="Game_CenterModel.FK_GameInfo_Edition" ManuallyRouted="false" />
         <AssociationConnector Association="Game_CenterModel.FK_Employee_Position" ManuallyRouted="false" />
         <AssociationConnector Association="Game_CenterModel.FK_EmployeeInfo_Employee" ManuallyRouted="false" />
         <AssociationConnector Association="Game_CenterModel.FK_EmployeeInfo_Gender" ManuallyRouted="false" />
