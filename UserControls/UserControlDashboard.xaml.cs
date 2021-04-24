@@ -69,8 +69,9 @@ namespace CourseMM
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
-            cmbPlatform = null;
-            cmbGenre = null;
+            txtName.Text = "";
+            cmbPlatform.Text = "";
+            cmbGenre.Text = "";
             DataGridGames.ItemsSource = context.GameInfo.ToList();
         }
     }
