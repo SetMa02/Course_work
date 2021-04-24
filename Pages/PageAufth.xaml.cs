@@ -40,7 +40,7 @@ namespace CourseMM.Pages
                 if(tryCount == 5)
                 {   
                     btnAufth.IsEnabled = false;
-                    MessageBox.Show("Кнопка заьлокирована на 5 секунд");
+                    MessageBox.Show("Кнопка заблокирована на 5 секунд!");
                     Thread.Sleep(5000);
                     
                     tryCount = 0;
@@ -48,8 +48,6 @@ namespace CourseMM.Pages
                 }
             }
         }
-
-    
 
         private void Aufthoriz()
         {
@@ -60,7 +58,12 @@ namespace CourseMM.Pages
                 p => p.Login == login && p.Password == password);
             if (position != null)
             {
-                //переход на след. страницк
+                switch(position.IdPosition)
+                {
+                    case 1:
+                        FrameManager.MainFrame.Navigate(new PageAdmin());
+                        break;
+                }
             }
             else
             {

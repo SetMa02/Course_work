@@ -10,23 +10,16 @@
 
     <Grid>
         <Border HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="2" >
-            <Border.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Border.Resources>
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="20" ></DropShadowEffect>
-            </Border.Effect>
+           
         <StackPanel Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
                 <TextBlock HorizontalAlignment="Center" Text="Авторизация"></TextBlock>
                 <StackPanel  Margin="0,15,0,0" Orientation="Horizontal">
                     <TextBlock Text="Логин:"></TextBlock>
-                    <TextBox x:Name="txtLogin" Margin="20,0,0,0" Language="English" Width="75"></TextBox>
+                    <TextBox x:Name="txtLogin" Margin="20,0,0,0"  Width="75"></TextBox>
                 </StackPanel>
                 <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
                     <TextBlock Text="Пароль:"></TextBlock>
-                    <TextBox x:Name="txtPass"  Margin="13,0,0,0" Language="English" Width="75"></TextBox>
+                    <PasswordBox x:Name="txtPass"  Margin="13,0,0,0"  Width="75"></PasswordBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
                     <Button x:Name="btnAufth" Content="Войти" Click="btnAufth_Click" >
@@ -38,6 +31,14 @@
                     </Button>
                 </StackPanel>
             </StackPanel>
+            <Border.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Border.Resources>
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" ></DropShadowEffect>
+            </Border.Effect>
         </Border>
     </Grid>
 </Page>
