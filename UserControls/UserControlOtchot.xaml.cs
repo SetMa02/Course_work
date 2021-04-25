@@ -26,8 +26,23 @@ namespace CourseMM.UserControls
         {
             InitializeComponent();
             context = new Game_CenterEntities();
-            DataGridSales.ItemsSource = context.Sales;
+            DataGridSales.ItemsSource = context.Sales.ToList();
             
+        }
+
+        private void brnExport_Click(object sender, RoutedEventArgs e)
+        {
+            DataGridSales.SelectAllCells();
+            DataGridSales.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
+            ApplicationCommands.Copy.Execute(null, DataGridSales);
+            String resultat = (string)Clipboard.GetData(DataFormats.CommaSeparatedValue);
+            String result = (string)Clipboard.GetData(DataFormats.Text);
+            DataGridSales.UnselectAllCells();
+            System.IO.StreamWriter file1 = new System.IO.StreamWriter(@"C:\test.xls");
+            file1.WriteLine(result.Replace(',', ' '));
+            file1.Close();
+
+            MessageBox.Show(" Exporting DataGrid data to Excel file created.xls");
         }
     }
 }

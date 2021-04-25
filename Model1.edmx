@@ -103,6 +103,8 @@
           <Property Name="id_Game" Type="int" Nullable="false" />
           <Property Name="DateofSale" Type="date" Nullable="false" />
           <Property Name="Qty" Type="int" />
+          <Property Name="Price" Type="money" />
+          <Property Name="Summ" Type="money" StoreGeneratedPattern="Computed" />
         </EntityType>
         <Association Name="FK_Employee_Position">
           <End Role="Position" Type="Self.Position" Multiplicity="1" />
@@ -381,6 +383,8 @@
           <Property Name="DateofSale" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Qty" Type="Int32" />
           <NavigationProperty Name="Games" Relationship="Self.FK_Sales_Games" FromRole="Sales" ToRole="Games" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Summ" Type="Decimal" Precision="19" Scale="4" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <Association Name="FK_GameInfo_AgeLimit">
           <End Role="AgeLimit" Type="Self.AgeLimit" Multiplicity="0..1" />
@@ -648,6 +652,8 @@
           <EntitySetMapping Name="Sales">
             <EntityTypeMapping TypeName="Game_CenterModel.Sales">
               <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="Summ" ColumnName="Summ" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Id_Sale" ColumnName="Id_Sale" />
                 <ScalarProperty Name="id_Game" ColumnName="id_Game" />
                 <ScalarProperty Name="DateofSale" ColumnName="DateofSale" />

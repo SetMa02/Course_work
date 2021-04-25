@@ -18,6 +18,8 @@ namespace CourseMM
         public int id_Game { get; set; }
         public System.DateTime DateofSale { get; set; }
         public Nullable<int> Qty { get; set; }
+        public Nullable<decimal> Price { get; set; }
+        public Nullable<decimal> Summ { get; set; }
     
         public virtual Games Games { get; set; }
     }
