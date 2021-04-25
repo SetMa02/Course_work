@@ -22,8 +22,8 @@ namespace CourseMM
     
         public int IdGame { get; set; }
         public string Name { get; set; }
-        public int Qty { get; set; }
-        public System.DateTime DelDate { get; set; }
+        public Nullable<int> Qty { get; set; }
+        public Nullable<System.DateTime> DelDate { get; set; }
         public Nullable<decimal> Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

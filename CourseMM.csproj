@@ -147,6 +147,9 @@
     <Compile Include="UserControls\UserControlDashboard.xaml.cs">
       <DependentUpon>UserControlDashboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlGameCreate.xaml.cs">
+      <DependentUpon>UserControlGameCreate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserControlMenuItem.xaml.cs">
       <DependentUpon>UserControlMenuItem.xaml</DependentUpon>
     </Compile>
@@ -173,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\UserControlDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UserControlGameCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,4 +1,5 @@
-﻿using CourseMM.ViewModel;
+﻿using CourseMM.UserControls;
+using CourseMM.ViewModel;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -22,13 +23,16 @@ namespace CourseMM.Pages
     /// </summary>
     public partial class PageAdmin : Page
     {
+        Game_CenterEntities context;
         public PageAdmin()
         {
             InitializeComponent();
+            context = new Game_CenterEntities();
+           
 
             var menuTables = new List<SubItem>();
             menuTables.Add(new SubItem("Товар на складе", new UserControlDashboard()));
-            menuTables.Add(new SubItem("+ добавить товар"));
+            menuTables.Add(new SubItem("+ добавить товар", new UserControlGameCreate(context)));
             menuTables.Add(new SubItem("Дополнительно"));
             var item0 = new ItemMenu("Товары", menuTables, PackIconKind.Table);
 
