@@ -20,9 +20,14 @@ namespace CourseMM.UserControls
     /// </summary>
     public partial class UserControlOtchot : UserControl
     {
+
+        Game_CenterEntities context;
         public UserControlOtchot()
         {
             InitializeComponent();
+            context = new Game_CenterEntities();
+            DataGridSales.ItemsSource = context.Sales;
+            
         }
     }
 }

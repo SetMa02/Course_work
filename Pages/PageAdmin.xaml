@@ -24,17 +24,21 @@
             </Grid>
         </materialDesign:ColorZone>
         <Grid HorizontalAlignment="Stretch" Grid.Row="1" Background="{StaticResource PrimaryHueMidBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="21*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Background="GhostWhite">
-                 <Image  Source="/Images/logo.png"></Image> 
+            <Grid Grid.Row="0" Background="GhostWhite" Grid.ColumnSpan="2">
+                <Image  Source="/Images/logo.png"></Image>
             </Grid>
-            <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
+            <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.ColumnSpan="2">
                 <StackPanel x:Name="Menu" Margin="5" ></StackPanel>
             </ScrollViewer>
-            </Grid>
+        </Grid>
         <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" x:Name="StackPanelMain"></StackPanel>
     </Grid>
 </Page>

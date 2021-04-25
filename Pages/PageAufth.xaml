@@ -9,7 +9,7 @@
       Title="PageAufth">
 
     <Grid>
-        <Border HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="2" >
+        <Border HorizontalAlignment="Right" Margin="0,50,150,0" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="2" >
            
         <StackPanel Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
                 <TextBlock HorizontalAlignment="Center" Text="Авторизация"></TextBlock>

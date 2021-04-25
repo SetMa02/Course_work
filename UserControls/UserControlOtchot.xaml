@@ -7,6 +7,24 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="75"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <DataGrid x:Name="DataGridSales" AlternatingRowBackground="AliceBlue" AutoGenerateColumns="False" ColumnWidth="*">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding Games.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата продажы" Binding="{Binding DataofSale}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Qty}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Сумма">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock x:Name="txtSumm" ></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>
