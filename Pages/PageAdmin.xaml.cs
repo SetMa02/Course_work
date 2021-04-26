@@ -37,7 +37,7 @@ namespace CourseMM.Pages
             var item0 = new ItemMenu("Товары", menuTables, PackIconKind.Table);
 
             var menuEmployee = new List<SubItem>();
-            menuEmployee.Add(new SubItem("Список сотрудников"));
+            menuEmployee.Add(new SubItem("Список сотрудников", new UserControlEmployee()));
             menuEmployee.Add(new SubItem(" + добавить сотрудника"));
             menuEmployee.Add(new SubItem("Дополнительно"));
             var item1 = new ItemMenu("Сотрудники", menuEmployee, PackIconKind.CustomerService);

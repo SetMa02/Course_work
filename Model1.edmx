@@ -84,7 +84,7 @@
             <PropertyRef Name="IdPosition" />
           </Key>
           <Property Name="IdPosition" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Position" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Position1" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -361,10 +361,10 @@
             <PropertyRef Name="IdPosition" />
           </Key>
           <Property Name="IdPosition" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Position1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Position" FromRole="Position" ToRole="Employee" />
+          <Property Name="Position1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Publisher">
           <Key>
@@ -634,8 +634,8 @@
           <EntitySetMapping Name="Position">
             <EntityTypeMapping TypeName="Game_CenterModel.Position">
               <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="Position1" ColumnName="Position1" />
                 <ScalarProperty Name="IdPosition" ColumnName="IdPosition" />
-                <ScalarProperty Name="Position1" ColumnName="Position" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
