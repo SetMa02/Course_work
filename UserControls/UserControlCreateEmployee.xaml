@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="CourseMM.UserControls.UserControlCreateEmployee"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CourseMM.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,75,0,0" VerticalAlignment="Center">
+            <Border Padding="10" BorderThickness="3" BorderBrush="#2195f3" CornerRadius="15">
+                <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock FontSize="20" Margin="5">Фамилия:</TextBlock>
+                    <TextBox FontSize="20" Margin="5" x:Name="txtFName" Width="250" Text="{Binding Employee.FName}"></TextBox>
+                </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                        <TextBlock FontSize="20" Margin="20,0,30,0">Имя:</TextBlock>
+                        <TextBox FontSize="20" Margin="5" x:Name="txtLName" Width="250" Text="{Binding Employee.LName}"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <TextBlock FontSize="20" Margin="5">Отчество:</TextBlock>
+                        <TextBox FontSize="20" Margin="5" x:Name="txtPName" Width="250" Text="{Binding Employee.Panronymic}"></TextBox>
+                </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                        <TextBlock FontSize="20" Margin="5">Пол:</TextBlock>
+                        <ComboBox x:Name="cmbGender" Width="75" SelectedItem="{Binding IdGender}" DisplayMemberPath="Gender"></ComboBox>
+                        <TextBlock FontSize="20" Margin="5">Дата рождения:</TextBlock>
+                        <DatePicker Name="BirthDate" Width="75" SelectedDate="{Binding BirthDate}"></DatePicker>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                        <TextBlock FontSize="20" Margin="5">Телефон:</TextBlock>
+                        <TextBox PreviewTextInput="txtPhone_PreviewTextInput" x:Name="txtPhone" Margin="5" Width="80" Text="{Binding Phone}"></TextBox>
+                        <TextBlock FontSize="20" Margin="5">ИНН:</TextBlock>
+                        <TextBox PreviewTextInput="txtPhone_PreviewTextInput" x:Name="txtINN" Margin="5" Width="100" Text="{Binding INN}"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                        <TextBlock FontSize="20" Margin="5">Должность:</TextBlock>
+                        <ComboBox x:Name="cmbPositions" Width="100" SelectedItem="{Binding Employee.IdPosition}" DisplayMemberPath="Position1"></ComboBox>
+                        <TextBlock FontSize="20" Margin="5">Дата начала:</TextBlock>
+                        <DatePicker Name="StarthDate" Width="75" SelectedDate="{Binding DateOfStart}"></DatePicker>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btnSave" Margin="10" Click="btnSave_Click">Сохранить</Button>
+                <Button x:Name="btnClear" Margin="10" Click="btnClear_Click" Background="Red">Очистить</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

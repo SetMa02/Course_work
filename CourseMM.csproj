@@ -144,6 +144,9 @@
     <Compile Include="Sales.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlCreateEmployee.xaml.cs">
+      <DependentUpon>UserControlCreateEmployee.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserControlDashboard.xaml.cs">
       <DependentUpon>UserControlDashboard.xaml</DependentUpon>
     </Compile>
@@ -190,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PageAufth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UserControlCreateEmployee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

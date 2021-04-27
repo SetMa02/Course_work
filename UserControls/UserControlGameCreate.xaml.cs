@@ -21,6 +21,7 @@ namespace CourseMM.UserControls
     public partial class UserControlGameCreate : UserControl
     {
         Game_CenterEntities _context;
+        
 
         public UserControlGameCreate(Game_CenterEntities context)
         {
