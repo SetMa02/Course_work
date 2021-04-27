@@ -8,8 +8,12 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageAufth">
 
-    <Grid>
-        <Border HorizontalAlignment="Right" Margin="0,50,150,0" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="2" >
+    <Grid >
+        <Border>
+            <Border.Background>
+                <ImageBrush ImageSource="/Images/Без имени-2.png"></ImageBrush>
+            </Border.Background>
+        <Border BorderBrush="#2195f3" HorizontalAlignment="Center" Margin="0,90,0,0" VerticalAlignment="Center" BorderThickness="4" >
            
         <StackPanel Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
                 <TextBlock HorizontalAlignment="Center" Text="Авторизация"></TextBlock>
@@ -33,12 +37,13 @@
             </StackPanel>
             <Border.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
+                    <Setter Property="CornerRadius" Value="30"/>
                 </Style>
             </Border.Resources>
             <Border.Effect>
-                <DropShadowEffect BlurRadius="20" ></DropShadowEffect>
+                <DropShadowEffect BlurRadius="25" ></DropShadowEffect>
             </Border.Effect>
+        </Border>
         </Border>
     </Grid>
 </Page>

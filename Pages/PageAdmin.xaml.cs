@@ -33,7 +33,7 @@ namespace CourseMM.Pages
             var menuTables = new List<SubItem>();
             menuTables.Add(new SubItem("Товар на складе", new UserControlDashboard()));
             menuTables.Add(new SubItem("+ добавить товар", new UserControlGameCreate(context)));
-            menuTables.Add(new SubItem("Дополнительно"));
+            menuTables.Add(new SubItem("Дополнительно", new UserControlGameProperties()));
             var item0 = new ItemMenu("Товары", menuTables, PackIconKind.Table);
 
             var menuEmployee = new List<SubItem>();

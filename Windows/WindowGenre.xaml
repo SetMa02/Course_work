@@ -1,0 +1,16 @@
+﻿<Window x:Class="CourseMM.Windows.WindowGenre"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseMM.Windows"
+        mc:Ignorable="d"
+        Title="WindowGenre" Height="150" Width="200">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Margin="5">Наименование жанра:</TextBlock>
+            <TextBox Margin="5" x:Name="txtGenre"></TextBox>
+            <Button x:Name="btnSave" Click="btnSave_Click">Сохранить</Button>
+        </StackPanel>
+    </Grid>
+</Window>

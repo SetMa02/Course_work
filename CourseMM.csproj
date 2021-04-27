@@ -153,6 +153,9 @@
     <Compile Include="UserControls\UserControlGameCreate.xaml.cs">
       <DependentUpon>UserControlGameCreate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlGameProperties.xaml.cs">
+      <DependentUpon>UserControlGameProperties.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserControlMenuItem.xaml.cs">
       <DependentUpon>UserControlMenuItem.xaml</DependentUpon>
     </Compile>
@@ -161,6 +164,15 @@
     </Compile>
     <Compile Include="ViewModel\ItemMenu.cs" />
     <Compile Include="ViewModel\SubItem.cs" />
+    <Compile Include="Windows\WindowGenre.xaml.cs">
+      <DependentUpon>WindowGenre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowPlatform.xaml.cs">
+      <DependentUpon>WindowPlatform.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowPublisher.xaml.cs">
+      <DependentUpon>WindowPublisher.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -193,11 +205,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\UserControlGameProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\UserControlMenuItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\UserControlOtchot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowGenre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowPlatform.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowPublisher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -241,6 +269,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\BackGround.png" />
+    <Resource Include="Images\Без имени-2.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
