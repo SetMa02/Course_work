@@ -23,11 +23,9 @@
 
         <DataGrid x:Name="DataGridSales" Grid.Row="1" AlternatingRowBackground="AliceBlue" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*">
             <DataGrid.Columns>
-                
-                <DataGridTextColumn Header="Название" Binding="{Binding Games.Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата продажы" Binding="{Binding DateofSale, StringFormat={}{0:dd.MM.yyyy}}"></DataGridTextColumn>
+
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Количество" Binding="{Binding Qty}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Сумма" Binding="{Binding Summ}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">

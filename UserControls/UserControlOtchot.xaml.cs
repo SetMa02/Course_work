@@ -1,18 +1,9 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.Office.Interop.Excel;
 
 namespace CourseMM.UserControls
 {
@@ -20,7 +11,7 @@ namespace CourseMM.UserControls
     /// Логика взаимодействия для UserControlOtchot.xaml
     /// </summary>
     /// 
-    public class Result1
+    public class Res
     {
         public string Name { get; set; }
         public int Qty { get; set; }
@@ -31,6 +22,7 @@ namespace CourseMM.UserControls
 
         Game_CenterEntities context;
         List<Sales> salesFound;
+        
         List<(string Name, int Qty)> res;
         bool StopDoSelectedDateChanged = false;
 
@@ -63,17 +55,18 @@ namespace CourseMM.UserControls
                 salesFound = salesFound.Where(a => a.DateofSale >= dateFirst.SelectedDate && a.DateofSale <= dateSecond.SelectedDate).ToList();
                 if(txtName.Text != null)
                 {
-                    string name = txtName.Text;
-                    salesFound = salesFound.Where(a => a.Games.Name.ToLower().Contains(name.ToLower())).ToList();
+                    String Name = txtName.Text;
+                    salesFound = salesFound.Where(a => a.Games.Name.ToLower().Contains(Name.ToLower())).ToList();
                 }
                 DataGridSales.Items.Clear();
-                
-                res = salesFound.GroupBy(x => x.Games.Name).Select(a => (Name: a.Key, Qty: a.Sum(b => b.Qty))).ToList();
+
+
+                res = salesFound.GroupBy(x => x.Games.Name).Select(g => (Name: g.Key, Qty: (int)(g.Sum(k => k.Qty) ?? 0))).ToList();
                 res = res.OrderBy(z => z.Qty).ToList();
 
                 foreach (var item in res)
                 {
-                    Result1 newRow = new Result1();
+                    Res newRow = new Res();
                     newRow.Name = item.Name;
                     newRow.Qty = item.Qty;
                     DataGridSales.Items.Add(newRow);
