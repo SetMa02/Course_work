@@ -17,7 +17,7 @@ namespace CourseMM
         public int Id { get; set; }
         public int IdEmployee { get; set; }
         public int IdGender { get; set; }
-        public System.DateTime BirthDate { get; set; }
+        public Nullable<System.DateTime> BirthDate { get; set; }
         public Nullable<int> Phone { get; set; }
         public Nullable<int> INN { get; set; }
         public Nullable<System.DateTime> DateOfStart { get; set; }

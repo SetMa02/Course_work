@@ -24,7 +24,7 @@
                 </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                         <TextBlock FontSize="20" Margin="5">Пол:</TextBlock>
-                        <ComboBox x:Name="cmbGender" Width="75" SelectedItem="{Binding IdGender}" DisplayMemberPath="Gender"></ComboBox>
+                        <ComboBox x:Name="cmbGender" Width="75" SelectedItem="{Binding IdGender}" DisplayMemberPath="Gender1"></ComboBox>
                         <TextBlock FontSize="20" Margin="5">Дата рождения:</TextBlock>
                         <DatePicker Name="BirthDate" Width="75" SelectedDate="{Binding BirthDate}"></DatePicker>
                     </StackPanel>

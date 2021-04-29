@@ -29,7 +29,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdEmployee" Type="int" Nullable="false" />
           <Property Name="IdGender" Type="int" Nullable="false" />
-          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="BirthDate" Type="date" />
           <Property Name="Phone" Type="int" />
           <Property Name="INN" Type="int" />
           <Property Name="DateOfStart" Type="date" />
@@ -294,7 +294,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdEmployee" Type="Int32" Nullable="false" />
           <Property Name="IdGender" Type="Int32" Nullable="false" />
-          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
           <Property Name="Phone" Type="Int32" />
           <Property Name="INN" Type="Int32" />
           <Property Name="DateOfStart" Type="DateTime" Precision="0" />

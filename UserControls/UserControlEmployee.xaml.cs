@@ -27,5 +27,11 @@ namespace CourseMM.UserControls
             context = new Game_CenterEntities();
             DataGridEmployee.ItemsSource = context.EmployeeInfo.ToList();
         }
+
+        private void DataGridEmployee_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            DataGridEmployee.ItemsSource = context.EmployeeInfo.ToList();
+        }
+        
     }
 }

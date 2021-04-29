@@ -20,7 +20,7 @@ namespace CourseMM.UserControls
     /// </summary>
     public partial class UserControlCreateEmployee : UserControl
     {
-        string gender;
+    
         Game_CenterEntities context;
         public UserControlCreateEmployee()
         {
@@ -33,7 +33,9 @@ namespace CourseMM.UserControls
     
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
-        {
+        { 
+            try
+            {
             var newEmp = new Employee();
             var newEmpInfo = new EmployeeInfo();
             context.Employee.Add(newEmp);
@@ -42,24 +44,30 @@ namespace CourseMM.UserControls
             newEmp.FName = txtFName.Text;
             newEmp.Panronymic = txtPName.Text;
             newEmp.Position = (Position)cmbPositions.SelectedItem;
-            newEmpInfo.BirthDate = (DateTime)BirthDate.SelectedDate;
+            newEmpInfo.BirthDate = BirthDate.SelectedDate;
             newEmpInfo.Gender = (Gender)cmbGender.SelectedItem;
-            newEmpInfo.Phone = Int32.Parse(txtPhone.Text);
-            newEmpInfo.INN = Int32.Parse(txtINN.Text);
+            newEmpInfo.Phone = Convert.ToInt32(txtPhone.Text);
+            newEmpInfo.INN = Convert.ToInt32(txtINN.Text);
             newEmpInfo.DateOfStart = StarthDate.SelectedDate;
-            try
-            {
+          
                 context.SaveChanges();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка сохранения!: " + ex.ToString());
+                //MessageBox.Show("Ошибка сохранения!: " + ex.ToString());
             }
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-
+            txtFName.Text = "";
+            txtINN.Text = "";
+            txtLName.Text = "";
+            txtPhone.Text = "";
+            BirthDate.SelectedDate = null;
+            cmbGender.SelectedItem = null;
+            cmbPositions.SelectedItem = null;
+            StarthDate.SelectedDate = null;
         }
 
         private void txtPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)

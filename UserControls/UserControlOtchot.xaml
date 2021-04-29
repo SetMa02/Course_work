@@ -8,19 +8,29 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="75"></RowDefinition>
         </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <TextBlock FontSize="20">Поиск:</TextBlock>
+            <TextBox x:Name="txtName" TextChanged="txtName_TextChanged" Width="100"></TextBox>
+            <TextBlock  Margin="50,0,0,0" FontSize="20">Начало:</TextBlock>
+            <DatePicker x:Name="dateFirst" Width="100" SelectedDateChanged="dateFirst_SelectedDateChanged"></DatePicker>
+            <TextBlock Margin="50,0,0,0" FontSize="20">Конец:</TextBlock>
+            <DatePicker x:Name="dateSecond" Width="100" SelectedDateChanged="dateFirst_SelectedDateChanged"></DatePicker>
+        </StackPanel>
 
-        <DataGrid x:Name="DataGridSales" AlternatingRowBackground="AliceBlue" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*">
+        <DataGrid x:Name="DataGridSales" Grid.Row="1" AlternatingRowBackground="AliceBlue" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*">
             <DataGrid.Columns>
+                
                 <DataGridTextColumn Header="Название" Binding="{Binding Games.Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Дата продажы" Binding="{Binding DateofSale, StringFormat={}{0:dd.MM.yyyy}}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Количество" Binding="{Binding Qty}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Сумма" Binding="{Binding Summ}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button x:Name="brnExport" Click="brnExport_Click">Экспорт в Excel</Button>
         </StackPanel>
     </Grid>

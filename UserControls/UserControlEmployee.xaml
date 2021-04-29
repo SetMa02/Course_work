@@ -11,7 +11,7 @@
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="1" x:Name="DataGridEmployee" AutoGenerateColumns="False" ColumnWidth="*" IsReadOnly="True">
+        <DataGrid Grid.Row="1" x:Name="DataGridEmployee" AutoGenerateColumns="False" SelectedCellsChanged="DataGridEmployee_SelectedCellsChanged" ColumnWidth="*" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Employee.FName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding Employee.LName}"></DataGridTextColumn>
