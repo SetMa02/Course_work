@@ -65,9 +65,8 @@ namespace CourseMM
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Button btnEdit = (Button)sender;
-            var newGame = (GameInfo)btnAdd.DataContext;
-            WindowGameEdit windowGameEdit = new WindowGameEdit(context, newGame);
+            var currentGame = DataGridGames.SelectedItems.Cast<GameInfo>().ToList();
+            WindowGameEdit windowGameEdit = new WindowGameEdit(context, (sender as Button) .DataContext as CourseMM.GameInfo);
             windowGameEdit.Show();
         }
 
@@ -103,6 +102,14 @@ namespace CourseMM
                     MessageBox.Show("Ошибка удаления " + ex.ToString());
                 }
             }
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            var currentGame = (GameInfo)button.DataContext;
+            WindowGameEdit windowGameEdit = new WindowGameEdit(context ,currentGame);
+            windowGameEdit.Show();
         }
     }
 }

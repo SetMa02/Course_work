@@ -14,26 +14,25 @@ using System.Windows.Shapes;
 
 namespace CourseMM.Windows
 {
-    /// <summary>
-    /// Логика взаимодействия для WindowGameEdit.xaml
-    /// </summary>
+  
     public partial class WindowGameEdit : Window
     {
         
         Game_CenterEntities context;
-        GameInfo newGame1;
-        public WindowGameEdit(Game_CenterEntities context1, GameInfo newGame)
+
+        public WindowGameEdit(Game_CenterEntities context ,GameInfo newGame)
         {
             InitializeComponent();
-            this.context = context1;
+            this.context = context;
+            this.DataContext = newGame;
+
             cmbAgeLimit.ItemsSource = context.AgeLimit.ToList();
             cmbGameGenre.ItemsSource = context.Genre.ToList();
             cmbGamePlatform.ItemsSource = context.Platform.ToList();
             cmbGamePublisher.ItemsSource = context.Publisher.ToList();
 
-        
-   
-            
+            if(newGame != null)
+            txtNewGame.Text = newGame.Games.Name;
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)

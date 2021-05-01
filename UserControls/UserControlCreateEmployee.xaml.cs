@@ -45,7 +45,7 @@ namespace CourseMM.UserControls
             newEmp.Panronymic = txtPName.Text;
             newEmp.Position = (Position)cmbPositions.SelectedItem;
             newEmpInfo.BirthDate = BirthDate.SelectedDate;
-            newEmpInfo.Gender = (Gender)cmbGender.SelectedItem;
+            newEmpInfo.Gender = (Gender)cmbGender.SelectedItem; 
             newEmpInfo.Phone = Convert.ToInt32(txtPhone.Text);
             newEmpInfo.INN = Convert.ToInt32(txtINN.Text);
             newEmpInfo.DateOfStart = StarthDate.SelectedDate;
