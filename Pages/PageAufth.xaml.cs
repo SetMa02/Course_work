@@ -53,7 +53,6 @@ namespace CourseMM.Pages
         {
             string login = txtLogin.Text;
             string password = txtPass.Password.ToString();
-
             Position position = context.Position.FirstOrDefault(
                 p => p.Login == login && p.Password == password);
             if (position != null)
@@ -70,8 +69,6 @@ namespace CourseMM.Pages
                 tryCount++;
                 MessageBox.Show("Неверный логин или пароль", "Ошибка входа!");
             }
-
-
         }
     }
   

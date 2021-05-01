@@ -25,7 +25,6 @@
             </Button>
             <Button x:Name="btnRefresh" Margin="5" Click="btnRefresh_Click">Обновить</Button>
             <Button x:Name="btnDelete" Margin="5" Background="Red" Click="btnDelete_Click">Удалить</Button>
-            <Button x:Name="btnEdit" Content="Ред." Click="btnEdit_Click"></Button>
         </StackPanel>
         <DataGrid Grid.Row="1" x:Name="DataGridGames" AlternatingRowBackground="AliceBlue" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*" Grid.ColumnSpan="2">
             <DataGrid.Columns>
