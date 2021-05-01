@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseMM.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -64,7 +65,10 @@ namespace CourseMM
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            Button btnEdit = (Button)sender;
+            var newGame = (GameInfo)btnAdd.DataContext;
+            WindowGameEdit windowGameEdit = new WindowGameEdit(context, newGame);
+            windowGameEdit.Show();
         }
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
@@ -73,6 +77,32 @@ namespace CourseMM
             cmbPlatform.Text = "";
             cmbGenre.Text = "";
             DataGridGames.ItemsSource = context.GameInfo.ToList();
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var row = (GameInfo)DataGridGames.SelectedItem;
+            var row1 = context.Games.Where(x => x.IdGame == row.idGame);
+            if(row == null)
+            {
+                MessageBox.Show("Вебырите строуц на удаления");
+                return;
+            }
+            MessageBoxResult result = MessageBox.Show("Вы точно хотите удалить эту строку?", "Delete", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    context.GameInfo.Remove(row);
+                    
+                    context.SaveChanges();
+
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Ошибка удаления " + ex.ToString());
+                }
+            }
         }
     }
 }

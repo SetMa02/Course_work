@@ -1,0 +1,66 @@
+﻿<Window x:Class="CourseMM.Windows.WindowGameEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseMM.Windows"
+        mc:Ignorable="d"
+        Title="WindowGameEdit" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border Padding="10" BorderThickness="3" BorderBrush="#2195f3" CornerRadius="15">
+        <StackPanel Orientation="Vertical" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Vertical">
+
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center">Название:*</TextBlock>
+                        <TextBox x:Name="txtNewGame" Margin="10,0,0,0" Width="75" Text="{Binding Games.Name}" VerticalAlignment="Center"></TextBox>
+                    </StackPanel>
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center">Платформа:*</TextBlock>
+                        <ComboBox x:Name="cmbGamePlatform" SelectedItem="{Binding Platform}" DisplayMemberPath="Name" Width="75" HorizontalAlignment="Center"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <TextBlock Margin="-5,0,0,0" VerticalAlignment="Center">Дата выхода:*</TextBlock>
+                        <DatePicker Name="ReleaseDate" Width="75" SelectedDate="{Binding Release}"></DatePicker>
+                    </StackPanel>
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <TextBlock Margin="-15,0,0,0" VerticalAlignment="Center">Дата поставки:*</TextBlock>
+                        <DatePicker Name="SupplyDate" Width="75" SelectedDate="{Binding Games.DelDate}"></DatePicker>
+                    </StackPanel>
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center">Цена:*</TextBlock>
+                        <TextBox x:Name="txtPrice" Margin="35,0,0,0" Width="75" VerticalAlignment="Center" PreviewTextInput="txtPrice_PreviewTextInput" Text="{Binding Games.Price}"></TextBox>
+                    </StackPanel>
+
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center">Жанр:*</TextBlock>
+                        <ComboBox x:Name="cmbGameGenre" Margin="20,0,0,0" SelectedItem="{Binding Genre}" DisplayMemberPath="NameOfGenre" Width="75" HorizontalAlignment="Center"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center">Издатель:*</TextBlock>
+                        <ComboBox x:Name="cmbGamePublisher" SelectedItem="{Binding Publisher}" DisplayMemberPath="PublisherName" Width="75" HorizontalAlignment="Center"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center">PEGI:*</TextBlock>
+                        <ComboBox Margin="27,0,0,0" x:Name="cmbAgeLimit" SelectedItem="{Binding AgeLimit}" DisplayMemberPath="Name" Width="75" HorizontalAlignment="Center"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center">Количество:*</TextBlock>
+                        <TextBox x:Name="txtQty" Margin="10,0,0,0" Width="75" VerticalAlignment="Center" Text="{Binding Games.Qty}" PreviewTextInput="txtPrice_PreviewTextInput"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <Button x:Name="btnSave" Foreground="White" Margin="10" Click="btnSave_Click">Сохранить</Button>
+                        <Button x:Name="btnClear" Margin="10" Background="#ff4500" Click="btnClear_Click">Очистить</Button>
+            </StackPanel>
+        </StackPanel>
+        </Border>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -20,6 +20,7 @@
             <Button x:Name="btnAdd" Click="btnAdd_Click" Margin="5" FontSize="24" Content="+" Padding="5,-2,5,5">
             </Button>
             <Button x:Name="btnRefresh" Margin="5" Click="btnRefresh_Click">Обновить</Button>
+            <Button x:Name="btnDelete" Margin="5" Background="Red" Click="btnDelete_Click">Удалить</Button>
         </StackPanel>
         <DataGrid Grid.Row="1" x:Name="DataGridGames" AlternatingRowBackground="AliceBlue" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*">
             <DataGrid.Columns>

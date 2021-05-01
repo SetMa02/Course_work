@@ -170,6 +170,12 @@
     </Compile>
     <Compile Include="ViewModel\ItemMenu.cs" />
     <Compile Include="ViewModel\SubItem.cs" />
+    <Compile Include="Windows\WindowEmployeeCreate.xaml.cs">
+      <DependentUpon>WindowEmployeeCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowGameEdit.xaml.cs">
+      <DependentUpon>WindowGameEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\WindowGenre.xaml.cs">
       <DependentUpon>WindowGenre.xaml</DependentUpon>
     </Compile>
@@ -224,6 +230,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\UserControlOtchot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowEmployeeCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowGameEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

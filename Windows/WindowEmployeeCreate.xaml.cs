@@ -10,46 +10,43 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CourseMM.UserControls
+namespace CourseMM.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для UserControlCreateEmployee.xaml
+    /// Логика взаимодействия для WindowEmployeeCreate.xaml
     /// </summary>
-    public partial class UserControlCreateEmployee : UserControl
+    public partial class WindowEmployeeCreate : Window
     {
-    
         Game_CenterEntities context;
-        public UserControlCreateEmployee()
+        public WindowEmployeeCreate(Game_CenterEntities context1)
         {
             InitializeComponent();
-            context = new Game_CenterEntities();
+            context = context1;
             cmbPositions.ItemsSource = context.Position.ToList();
             cmbGender.ItemsSource = context.Gender.ToList();
         }
 
-    
-
         private void btnSave_Click(object sender, RoutedEventArgs e)
-        { 
+        {
             try
             {
-            var newEmp = new Employee();
-            var newEmpInfo = new EmployeeInfo();
-            context.Employee.Add(newEmp);
-            context.EmployeeInfo.Add(newEmpInfo);
-            newEmp.FName = txtFName.Text;
-            newEmp.LName = txtLName.Text;
-            newEmp.Panronymic = txtPName.Text;
-            newEmp.Position = (Position)cmbPositions.SelectedItem;
-            newEmpInfo.BirthDate = BirthDate.SelectedDate;
-            newEmpInfo.Gender = (Gender)cmbGender.SelectedItem;
-            newEmpInfo.Phone = Convert.ToInt32(txtPhone.Text);
-            newEmpInfo.INN = Convert.ToInt32(txtINN.Text);
-            newEmpInfo.DateOfStart = StarthDate.SelectedDate;
-          
+                var newEmp = new Employee();
+                var newEmpInfo = new EmployeeInfo();
+                context.Employee.Add(newEmp);
+                context.EmployeeInfo.Add(newEmpInfo);
+
+                newEmp.FName = txtFName.Text;
+                newEmp.LName = txtLName.Text;
+                newEmp.Panronymic = txtPName.Text;
+                newEmp.Position = (Position)cmbPositions.SelectedItem;
+                newEmpInfo.BirthDate = BirthDate.SelectedDate;
+                newEmpInfo.Gender = (Gender)cmbGender.SelectedItem;
+                newEmpInfo.Phone = Convert.ToInt32(txtPhone.Text);
+                newEmpInfo.INN = Convert.ToInt32(txtINN.Text);
+                newEmpInfo.DateOfStart = StarthDate.SelectedDate;
+
                 context.SaveChanges();
             }
             catch (Exception ex)
@@ -71,6 +68,11 @@ namespace CourseMM.UserControls
         }
 
         private void txtPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !(Char.IsDigit(e.Text, 0));
+        }
+
+        private void txtINN_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !(Char.IsDigit(e.Text, 0));
         }

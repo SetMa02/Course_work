@@ -11,6 +11,11 @@
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Margin="10" x:Name="btnAdd" Click="btnAdd_Click">Добавить</Button>
+            <Button  Margin="10" x:Name="btnEdit" Click="btnEdit_Click">Редактировать</Button>
+            <Button  Margin="10" x:Name="btnDelete" Click="btnDelete_Click" Background="Red">Удалить</Button>
+        </StackPanel>
         <DataGrid Grid.Row="1" x:Name="DataGridEmployee" AutoGenerateColumns="False" SelectedCellsChanged="DataGridEmployee_SelectedCellsChanged" ColumnWidth="*" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Employee.FName}"></DataGridTextColumn>
